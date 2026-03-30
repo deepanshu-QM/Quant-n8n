@@ -7,7 +7,7 @@ export default App(){
   <div>
       <BrowserRouter>
          <Routes>
-           <Route path="./dashboard" element={<CreateWorkFlow/>}/>
+           <Route path="/create-workflow" element={<CreateWorkFlow/>}/>
          </Routes>
       </BrowserRouter>
   </div>
