@@ -1,14 +1,15 @@
 import '@xyflow/react/dist/style.css';
-import { BrowserRouter, Routes, Route} from 'react-router-dom';
-import {CreateWorkFlow} from './components/CreateWorkFlow';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import CreateWorkFlow from './components/CreateWorkFlow';
 
-export default App(){
-  return 
-  <div>
+export default function App() {
+  return (
+    <div>
       <BrowserRouter>
-         <Routes>
-           <Route path="/create-workflow" element={<CreateWorkFlow/>}/>
-         </Routes>
+        <Routes>
+          <Route path="/dashboard" element={<CreateWorkFlow />} />
+        </Routes>
       </BrowserRouter>
-  </div>
+    </div>
+  );
 }
