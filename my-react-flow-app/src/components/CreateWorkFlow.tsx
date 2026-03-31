@@ -2,11 +2,12 @@ import { useState, useCallback } from 'react';
 import { ReactFlow, applyNodeChanges, applyEdgeChanges, addEdge } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
  
-
+export type Type = "action" | "trigger";
+export type NodeKind = "price-trigger" | "timer-trigger" |  "hyperliquid" | "backpack" | "lighter";
 interface NodeType {
   data : {
-    type : "action"  | "trigger",
-    kind : "price-trigger" | "timer-trigger" | "hyperliquid" | "backpack" | "lighter"
+    type : Type,
+    kind : NodeKind
   }
   id : string , position : {x : number , y : number},
 }
