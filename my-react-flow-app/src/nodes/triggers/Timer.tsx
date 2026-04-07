@@ -3,8 +3,8 @@ import {Handle, Position} from "@xyflow/react"
 
 
 
-type TimerNodeMetadata = {
-    time : string,
+export type TimerNodeMetadata = {
+    time : number,
 };
 
 export function Timer({data, isConnectable} : {
@@ -13,9 +13,9 @@ export function Timer({data, isConnectable} : {
     },
     isConnectable : boolean
 }) {
-    return 
+    return (
     <div className="p-4 border">
-          {data.metadata.time} 
-        <Handle type="source" position={Position.Right}></Handle>
-    </div>
+          {data.metadata.time / 3600}  seconds
+        <Handle type="source" position={Position.Right} isConnectable={isConnectable}></Handle>
+    </div>);
 }

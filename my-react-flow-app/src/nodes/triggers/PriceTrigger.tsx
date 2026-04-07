@@ -7,6 +7,7 @@ import {Handle, Position} from "@xyflow/react"
 export type PriceTriggerMetadata = {
     asset: string,
     price: number
+    decimals : number
 };
 
 export function PriceTrigger({data, isConnectable} : {
@@ -15,10 +16,15 @@ export function PriceTrigger({data, isConnectable} : {
     },
     isConnectable : boolean
 }) {
-    return 
+    return (
     <div className="p-4 border">
-        {data.metadata.asset}
-        {data.metadata.price}
-        <Handle type="source" position={Position.Right}></Handle>
-    </div>
+        <div>
+            {data.metadata.asset}
+        </div>
+
+        <div>
+            {data.metadata.price}
+        </div>
+        <Handle type="source" position={Position.Right} isConnectable={isConnectable}></Handle>
+    </div>);
 }

@@ -1,44 +1,54 @@
 import { useState, useCallback } from 'react';
-import { ReactFlow, applyNodeChanges, applyEdgeChanges, addEdge } from '@xyflow/react';
-import type { Node, Edge, NodeChange, EdgeChange, Connection } from '@xyflow/react';
-import '@xyflow/react/dist/style.css';
+import {
+  ReactFlow,
+  applyNodeChanges,
+  applyEdgeChanges,
+  addEdge,
+  type Node,
+  type Edge,
+  type NodeTypes,
+  type OnNodesChange,
+  type OnEdgesChange,
+  type OnConnect,
+} from '@xyflow/react';
 import { TriggerSheet } from './TriggerSheet';
-import { Timer } from '@/nodes/Timer';
 import { PriceTrigger } from '@/nodes/triggers/PriceTrigger';
+import { Timer } from '@/nodes/triggers/Timer';
 
-export type NodeKind = "price-trigger" | "timer-trigger" | "hyperliquid" | "backpack" | "lighter";
+export type NodeKind = "price-trigger" | "timer" | "hyperliquid" | "backpack" | "lighter";
 
-interface NodeData extends Record<string, unknown> {
-  type: "action" | "trigger";
-  kind: NodeKind;
-  metadata: any;
-  label: string;
-}
+export type NodeMetadata = any;
 
-type WorkflowNode = Node<NodeData>;
+type WorkflowNode = Node<
+  {
+    kind: "actions" | "triggers";
+    metadata: NodeMetadata;
+  },
+  NodeKind
+>;
 
-// Outside the component so nodeTypes reference is stable
-const nodeTypes = {
-  "timer-trigger": Timer,
+type WorkflowEdge = Edge;
+
+const nodeTypes: NodeTypes = {
   "price-trigger": PriceTrigger,
+  timer: Timer,
 };
 
 export function CreateWorkFlow() {
   const [nodes, setNodes] = useState<WorkflowNode[]>([]);
-  const [edges, setEdges] = useState<Edge[]>([]);
+  const [edges, setEdges] = useState<WorkflowEdge[]>([]);
 
-  const onNodesChange = useCallback(
-    (changes: NodeChange[]) => setNodes((nodes) => applyNodeChanges(changes, nodes)),
-    [],
-  );
-  const onEdgesChange = useCallback(
-    (changes: EdgeChange[]) => setEdges((edges) => applyEdgeChanges(changes, edges)),
-    [],
-  );
-  const onConnect = useCallback(
-    (params: Connection) => setEdges((edges) => addEdge(params, edges)),
-    [],
-  );
+  const onNodesChange: OnNodesChange<WorkflowNode> = useCallback((changes) => {
+    setNodes((nodesSnapShot) => applyNodeChanges<WorkflowNode>(changes, nodesSnapShot));
+  }, []);
+
+  const onEdgesChange: OnEdgesChange<WorkflowEdge> = useCallback((changes) => {
+    setEdges((edgesSnapShot) => applyEdgeChanges<WorkflowEdge>(changes, edgesSnapShot));
+  }, []);
+
+  const onConnect: OnConnect = useCallback((params) => {
+    setEdges((edgesSnapShot) => addEdge(params, edgesSnapShot));
+  }, []);
 
   return (
     <div style={{ width: '100vw', height: '100vh' }}>
@@ -47,12 +57,10 @@ export function CreateWorkFlow() {
           onSelect={(kind, metadata) => {
             setNodes([...nodes, {
               id: Math.random().toString(),
-              type: kind,           // tells ReactFlow which nodeTypes entry to use
+              type: kind,
               data: {
-                type: "trigger",
-                kind,
+                kind: "triggers",
                 metadata,
-                label: kind,
               },
               position: { x: 0, y: 0 },
             }]);
@@ -60,7 +68,7 @@ export function CreateWorkFlow() {
         />
       )}
       <ReactFlow
-        nodeTypes={nodeTypes}
+      nodeTypes={nodeTypes}
         nodes={nodes}
         edges={edges}
         onNodesChange={onNodesChange}
