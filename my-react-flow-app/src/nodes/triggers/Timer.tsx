@@ -14,8 +14,8 @@ export function Timer({data, isConnectable} : {
     isConnectable : boolean
 }) {
     return 
-    <div>
-        Every {data.metadata.time /3600} seconds 
+    <div className="p-4 border">
+          {data.metadata.time} 
         <Handle type="source" position={Position.Right}></Handle>
     </div>
 }
