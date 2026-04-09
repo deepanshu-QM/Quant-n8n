@@ -34,3 +34,4 @@ WorkFlow :
 [Place Order: BUY 1 SOL on Binance]
         ↓
 [Log Result → MongoDB]
+
