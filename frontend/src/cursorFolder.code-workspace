@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../../.."
+		},
+		{
+			"path": "../../../../../Downloads/career-Recommendation"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "files"
+	}
+}
