@@ -8,7 +8,7 @@ export type TradingMetadata = {
     symbol : typeof SUPPORTED_ASSETS[number]
 }
 //it is an Lighter Node : 
-export function Lighter({data} : {
+export function Hyperliquid({data} : {
     data : {
         metadata : TradingMetadata
     }

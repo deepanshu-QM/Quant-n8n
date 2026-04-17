@@ -15,7 +15,9 @@ import { TriggerSheet } from './TriggerSheet';
 import { ActionSheet } from './ActionSheet';
 import { PriceTrigger, type PriceTriggerMetadata } from '@/nodes/triggers/PriceTrigger';
 import { Timer, type TimerNodeMetadata } from '@/nodes/triggers/Timer';
-import type { TradingMetadata } from '@/nodes/actions/Lighter';
+import { Lighter, type TradingMetadata } from '@/nodes/actions/Lighter';
+import { Backpack } from '@/nodes/actions/Backpack';
+import { Hyperliquid } from '@/nodes/actions/Hyperliquid';
 
 export type NodeKind = "price-trigger" | "timer" | "hyperliquid" | "backpack" | "lighter";
 
@@ -34,6 +36,9 @@ type WorkflowEdge = Edge;
 const nodeTypes: NodeTypes = {
   "price-trigger": PriceTrigger,
   timer: Timer,
+  "Lighter" : Lighter,
+  "backpack" : Backpack,
+  "hyperliquid" : Hyperliquid
 };
 
 export function CreateWorkFlow() {
@@ -59,15 +64,16 @@ export function CreateWorkFlow() {
     setEdges((edgesSnapshot) => addEdge(params, edgesSnapshot));
   }, []);
 
+  const POSITION_OFFSET = 50
   const onConnectEnd = useCallback(
-    (event: MouseEvent | TouchEvent, connectionInfo: any) => {
+    (_event: MouseEvent | TouchEvent, connectionInfo: any) => {
       if (!connectionInfo.isValid) {
-        const clientX = event instanceof MouseEvent ? event.clientX : event.touches[0].clientX;
-        const clientY = event instanceof MouseEvent ? event.clientY : event.touches[0].clientY;
-
         setSelectedAction({
           startingNodeId: connectionInfo.fromNode.id,
-          position: { x: clientX, y: clientY },
+          position: { 
+            x: connectionInfo.from.x + POSITION_OFFSET,
+            y: connectionInfo.from.y + POSITION_OFFSET
+          },
         });
       }
     },
