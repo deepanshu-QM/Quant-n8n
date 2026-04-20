@@ -128,3 +128,8 @@
     @apply font-sans;
     }
 }
+
+/* Prevent Tailwind from overriding home page font */
+body {
+  background-color: #f0f0f0 !important;
+}

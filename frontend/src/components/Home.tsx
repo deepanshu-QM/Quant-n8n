@@ -2,22 +2,22 @@ import React from "react";
 import "./home.css";
 
 // — Images
-import chartImg from "./assets/ChartQunat.jpg";
-import bitcoinImg from "./assets/bitcoin-Qunat.jpg";
-import moneyImg from "./assets/moneyQuant-2.jpg";
-import solanaIcon from "./assets/solana.png";
-import binanceIcon from "./assets/binance.png";
-import hyperliquidIcon from "./assets/hyperliquid.png";
-import grid5img1 from "./assets/grid5img1.jpg";
-import grid5img2 from "./assets/grid5img2.jpg";
-import grid5img3 from "./assets/grid5img3.jpg";
-import grid5img4 from "./assets/grid5img4.jpg";
-import grid5img5 from "./assets/grid5img5.jpg";
+import chartImg from "../assets/ChartQunat.jpg";
+import bitcoinImg from "../assets/bitcoin-Qunat.jpg";
+import moneyImg from "../assets/moneyQuant-2.jpg";
+import solanaIcon from "../assets/solana.png";
+import binanceIcon from "../assets/binance.png";
+import hyperliquidIcon from "../assets/hyperliquid.png";
+import grid5img1 from "../assets/grid5img1.jpg";
+import grid5img2 from "../assets/grid5img2.jpg";
+import grid5img3 from "../assets/grid5img3.jpg";
+import grid5img4 from "../assets/grid5img4.jpg";
+import grid5img5 from "../assets/grid5img5.jpg";
 
 // — Videos
-import bgVideo from "./assets/HDforQuant03.mp4";
-import keyVideo from "./assets/key-video.mp4";
-import securityVideo from "./assets/security.mp4";
+import bgVideo from "../assets/HDforQuant03.mp4";
+import keyVideo from "../assets/key-video.mp4";
+import securityVideo from "../assets/security.mp4";
 
 const Home: React.FC = () => {
   return (
@@ -26,14 +26,15 @@ const Home: React.FC = () => {
       <div className="navbar-wrapper">
         <nav className="nav-left">
           <a href="#">Home</a>
-          <a href="#">Product</a>
-          <a href="#">Documentation</a>
-          <a href="#">GitHub</a>
+          <a href="/create-workflow">Product</a>
+          <a href="/Documentation">Documentation</a>
+          <a href="https://github.com/deepanshu-QM/Quant-n8n">GitHub</a>
+          <a href="/Login">Login</a>
         </nav>
 
         <nav className="nav-right">
-          <a href="#">Signup</a>
-          <a href="#" className="btn-contact">
+          <a href="/Signup">Signup</a>
+          <a href="/Contact" className="btn-contact">
             Contact Us
           </a>
         </nav>
@@ -71,7 +72,7 @@ const Home: React.FC = () => {
         {/* Grid 1 */}
         <div className="gridcontainer1">
           <div>
-            <img src={chartImg} alt="chart" width={500} />
+            <img src={chartImg} alt="chart"  />
           </div>
           <div>
             <h3>Fusing Finance with</h3>
@@ -92,14 +93,14 @@ const Home: React.FC = () => {
             <p>Every member is essential to our evolution.</p>
           </div>
           <div>
-            <img src={bitcoinImg} width={500} height={400} alt="bitcoin" />
+            <img src={bitcoinImg} alt="bitcoin" />
           </div>
         </div>
 
         {/* Grid 3 */}
         <div className="gridcontainer3">
           <div>
-            <img src={moneyImg} width={500} height={400} alt="money" />
+            <img src={moneyImg}  alt="money" />
           </div>
           <div>
             <h3>Beyond Investing</h3>

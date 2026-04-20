@@ -1,0 +1,277 @@
+/* =====================================================
+   CONTACT PAGE — Matches home.tsx design system
+===================================================== */
+
+.contact-page,
+.contact-page * {
+  font-family: Arial, Helvetica, sans-serif !important;
+  box-sizing: border-box;
+}
+
+/* Reuse navbar styles from home.css — same classes */
+/* Make sure home.css is also imported in main, OR copy navbar styles here */
+
+/* =========================
+   PAGE LAYOUT
+========================= */
+.contact-page {
+  min-height: 100vh;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-top: 100px; /* account for fixed navbar */
+  background-color: #f0f0f0;
+}
+
+/* =========================
+   LEFT PANEL
+========================= */
+.contact-left {
+  background-color: #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 60px;
+  min-height: calc(100vh - 100px);
+}
+
+.contact-left-inner {
+  max-width: 440px;
+}
+
+.contact-tag {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.12);
+  color: #aaa;
+  font-size: 13px !important;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  border-radius: 50px;
+  margin-bottom: 28px;
+}
+
+.contact-heading {
+  font-size: 52px !important;
+  font-weight: bold !important;
+  color: white !important;
+  line-height: 1.15 !important;
+  margin: 0 0 20px 0 !important;
+}
+
+.contact-heading em {
+  color: blue !important;
+  font-style: italic !important;
+}
+
+.contact-subtext {
+  font-size: 16px !important;
+  color: #888 !important;
+  line-height: 1.7 !important;
+  margin-bottom: 48px !important;
+}
+
+/* INFO LIST */
+.contact-info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.contact-info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.contact-info-icon {
+  width: 44px;
+  height: 44px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.contact-info-label {
+  font-size: 12px !important;
+  color: #666 !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0 0 4px 0 !important;
+}
+
+.contact-info-value {
+  font-size: 15px !important;
+  color: #ddd !important;
+  margin: 0 !important;
+  font-weight: 600 !important;
+}
+
+/* =========================
+   RIGHT PANEL
+========================= */
+.contact-right {
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 60px;
+}
+
+/* =========================
+   FORM
+========================= */
+.contact-form {
+  width: 100%;
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-title {
+  font-size: 30px !important;
+  font-weight: bold !important;
+  color: #111 !important;
+  margin: 0 0 8px 0 !important;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-group label {
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  color: #444 !important;
+  letter-spacing: 0.3px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 15px !important;
+  color: #111 !important;
+  background: #f5f5f5 !important;
+  border: 2px solid transparent !important;
+  border-radius: 12px !important;
+  padding: 13px 16px !important;
+  outline: none !important;
+  transition: border-color 0.2s, background 0.2s;
+  resize: none;
+  width: 100%;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #111 !important;
+  background: white !important;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #aaa !important;
+}
+
+/* SUBMIT BUTTON */
+.contact-submit-btn {
+  background: black !important;
+  color: white !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 16px !important;
+  font-weight: bold !important;
+  padding: 16px 32px !important;
+  border: none !important;
+  border-radius: 50px !important;
+  cursor: pointer !important;
+  transition: background 0.2s, transform 0.1s;
+  align-self: flex-start;
+  margin-top: 4px;
+}
+
+.contact-submit-btn:hover {
+  background: #222 !important;
+  transform: translateY(-1px);
+}
+
+/* =========================
+   SUCCESS STATE
+========================= */
+.contact-success {
+  text-align: center;
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.success-icon {
+  width: 72px;
+  height: 72px;
+  background: black;
+  color: white;
+  font-size: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.contact-success h2 {
+  font-size: 32px !important;
+  font-weight: bold !important;
+  color: #111 !important;
+  margin: 0 !important;
+}
+
+.contact-success p {
+  font-size: 16px !important;
+  color: #666 !important;
+  margin: 0 !important;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 900px) {
+  .contact-page {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-left {
+    padding: 60px 30px;
+    min-height: auto;
+  }
+
+  .contact-heading {
+    font-size: 36px !important;
+  }
+
+  .contact-right {
+    padding: 50px 24px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
