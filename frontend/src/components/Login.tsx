@@ -31,10 +31,10 @@ const Login: React.FC = () => {
       {/* NAVBAR — Matches home and signup */}
       <div className="navbar-wrapper">
         <nav className="nav-left">
-          <a href="/">Home</a>
+          <a href="/Home">Home</a>
           <a href="/create-workflow">Product</a>
           <a href="/documentation">Documentation</a>
-          <a href="#">GitHub</a>
+          <a href="/https://github.com/deepanshu-QM/Quant-n8n">GitHub</a>
         </nav>
         <nav className="nav-right">
           <a href="/signup">Signup</a>

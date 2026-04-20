@@ -30,7 +30,7 @@ const Contact: React.FC = () => {
           <a href="/">Home</a>
           <a href="/create-workflow">Product</a>
           <a href="#">Documentation</a>
-          <a href="#">GitHub</a>
+          <a href="/https://github.com/deepanshu-QM/Quant-n8n">GitHub</a>
         </nav>
         <nav className="nav-right">
           <a href="/signup">Signup</a>
