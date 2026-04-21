@@ -60,14 +60,14 @@ const Contact: React.FC = () => {
                 <div className="contact-info-icon">✉</div>
                 <div>
                   <p className="contact-info-label">Email</p>
-                  <p className="contact-info-value">hello@quantai.io</p>
+                  <p className="contact-info-value">deepanshu231997@gmail.com</p>
                 </div>
               </div>
               <div className="contact-info-item">
                 <div className="contact-info-icon">📍</div>
                 <div>
                   <p className="contact-info-label">Location</p>
-                  <p className="contact-info-value">San Francisco, CA</p>
+                  <p className="contact-info-value">Solan , HP</p>
                 </div>
               </div>
               <div className="contact-info-item">

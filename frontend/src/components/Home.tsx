@@ -142,19 +142,19 @@ const Home: React.FC = () => {
 
           <div className="grid5">
             <div>
-              <img src={grid5img1} className="grid5img" alt="dashboard 1" />
+              <img src={grid5img1} className="grid5img" alt="dashboard 1" loading="lazy" decoding="async"/>
             </div>
             <div>
-              <img src={grid5img2} className="grid5img" alt="dashboard 2" />
+              <img src={grid5img2} className="grid5img" alt="dashboard 2" loading="lazy" decoding="async" />
             </div>
             <div>
-              <img src={grid5img3} className="grid5img" alt="dashboard 3" />
+              <img src={grid5img3} className="grid5img" alt="dashboard 3" loading="lazy" decoding="async" />
             </div>
             <div>
-              <img src={grid5img4} className="grid5img" alt="dashboard 4" />
+              <img src={grid5img4} className="grid5img" alt="dashboard 4" loading="lazy" decoding="async" />
             </div>
             <div>
-              <img src={grid5img5} className="grid5img" alt="dashboard 5" />
+              <img src={grid5img5} className="grid5img" alt="dashboard 5" loading="lazy" decoding="async" />
             </div>
           </div>
 

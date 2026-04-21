@@ -39,7 +39,7 @@ const SUPPORTED_TRIGGERS = [
 
 type SupportedTriggerId = typeof SUPPORTED_TRIGGERS[number]["id"];
 
-export const SUPPORTED_ASSETS = ["SOL", "BTC", "ETH"] as const;
+export const SUPPORTED_ASSETS = ["SOL", "BTC", "ETH", "USDT","BNB", "XRP", "USDC", "ADA", "AVAX","TON", "LINK", "DOGE", "DOT", "MATIC", "NEAR","ICP","APT", "IMX","TRX", "SHIB"] as const;
 
 export const TriggerSheet = ({
   onSelect,

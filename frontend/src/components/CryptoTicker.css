@@ -1,0 +1,256 @@
+/* =====================================================
+   CRYPTO TICKER — Redesigned to Match Login Reference
+===================================================== */
+
+.ticker-page,
+.ticker-page * {
+  font-family: Arial, Helvetica, sans-serif !important;
+  box-sizing: border-box !important;
+}
+
+/* =========================
+   PAGE LAYOUT
+========================= */
+.ticker-page {
+  min-height: 100vh !important;
+  width: 100% !important;
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  padding-top: 100px !important;
+  background-color: #f0f0f0 !important;
+}
+
+/* =========================
+   LEFT PANEL (DARK)
+========================= */
+.ticker-left {
+  background-color: #111 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 80px 60px !important;
+  min-height: calc(100vh - 100px) !important;
+}
+
+.ticker-left-inner {
+  max-width: 400px !important;
+  width: 100% !important;
+}
+
+.ticker-brand {
+  font-size: 48px !important;
+  font-weight: bold !important;
+  color: white !important;
+  margin: 0 0 12px 0 !important;
+  letter-spacing: -1px !important;
+}
+
+.ticker-brand-sub {
+  font-size: 16px !important;
+  color: #777 !important;
+  line-height: 1.6 !important;
+  margin-bottom: 40px !important;
+}
+
+.ticker-features {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
+}
+
+.ticker-feature-item {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  font-size: 15px !important;
+  color: #ccc !important;
+}
+
+.ticker-feature-dot {
+  width: 8px !important;
+  height: 8px !important;
+  background: blue !important;
+  border-radius: 50% !important;
+  flex-shrink: 0 !important;
+}
+
+/* =========================
+   RIGHT PANEL (GRID)
+========================= */
+.ticker-right {
+  background: white !important;
+  display: block !important;
+  padding: 60px 40px !important;
+  overflow-y: auto !important;
+}
+
+.ticker-container {
+    width: 100% !important;
+    max-width: 900px !important;
+    margin: 0 auto !important;
+}
+
+.ticker-header-flex {
+    margin-bottom: 30px !important;
+}
+
+.ticker-tag {
+  display: inline-block !important;
+  background: #f0f0f0 !important;
+  color: blue !important;
+  font-size: 11px !important;
+  letter-spacing: 2px !important;
+  text-transform: uppercase !important;
+  padding: 5px 14px !important;
+  border-radius: 50px !important;
+  width: fit-content !important;
+  font-weight: bold !important;
+  margin-bottom: 15px !important;
+}
+
+.ticker-title {
+  font-size: 32px !important;
+  font-weight: bold !important;
+  color: #111 !important;
+  margin: 0 !important;
+}
+
+.ticker-loading {
+    color: #888 !important;
+    font-size: 15px !important;
+}
+
+/* GRID SYSTEM */
+.ticker-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)) !important;
+  gap: 20px !important;
+}
+
+/* CARD DESIGN — Matches Login input/button style */
+.ticker-card {
+  background: #f5f5f5 !important;
+  border: 2px solid transparent !important;
+  border-radius: 16px !important;
+  padding: 20px !important;
+  transition: all 0.2s ease !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+}
+
+.ticker-card:hover {
+    background: white !important;
+    border-color: #111 !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05) !important;
+}
+
+.ticker-card-top {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+.ticker-icon {
+  width: 40px !important;
+  height: 40px !important;
+  background: #111 !important;
+  color: white !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 10px !important;
+  font-size: 18px !important;
+  font-weight: bold !important;
+}
+
+.ticker-coin-name {
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  color: #111 !important;
+}
+
+.ticker-coin-symbol {
+  font-size: 11px !important;
+  color: #888 !important;
+  text-transform: uppercase !important;
+}
+
+.ticker-price {
+  font-size: 22px !important;
+  font-weight: bold !important;
+  color: #111 !important;
+  margin: 5px 0 !important;
+}
+
+.ticker-change {
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  padding: 4px 10px !important;
+  border-radius: 6px !important;
+  width: fit-content !important;
+}
+
+.ticker-change.up {
+  background: #e6fcf5 !important;
+  color: #0ca678 !important;
+}
+
+.ticker-change.down {
+  background: #fff5f5 !important;
+  color: #f03e3e !important;
+}
+
+.ticker-stats {
+  display: flex !important;
+  justify-content: space-between !important;
+  font-size: 11px !important;
+  color: #999 !important;
+  margin-top: 5px !important;
+  border-top: 1px solid #eee !important;
+  padding-top: 10px !important;
+}
+
+/* FLASH ANIMATIONS */
+@keyframes flashUp {
+  0% { background-color: #f5f5f5 !important; }
+  50% { background-color: #d3f9d8 !important; }
+  100% { background-color: #f5f5f5 !important; }
+}
+
+@keyframes flashDown {
+  0% { background-color: #f5f5f5 !important; }
+  50% { background-color: #ffe3e3 !important; }
+  100% { background-color: #f5f5f5 !important; }
+}
+
+.flash-up {
+  animation: flashUp 0.8s ease !important;
+}
+
+.flash-down {
+  animation: flashDown 0.8s ease !important;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 1000px) {
+  .ticker-page {
+    grid-template-columns: 1fr !important;
+  }
+
+  .ticker-left {
+    padding: 50px 30px !important;
+    min-height: auto !important;
+  }
+
+  .ticker-brand {
+    font-size: 36px !important;
+  }
+
+  .ticker-right {
+    padding: 40px 20px !important;
+  }
+}
