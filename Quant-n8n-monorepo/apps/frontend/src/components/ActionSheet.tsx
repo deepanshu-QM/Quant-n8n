@@ -18,8 +18,8 @@ import {
 } from "@/components/ui/select";
 import { useState } from "react";
 import { Input } from "./ui/input";
-import { SUPPORTED_ASSETS } from "./TriggerSheet";
-import type { TradingMetadata } from "@/nodes/actions/Lighter";
+import { SUPPORTED_ASSETS } from "common/types";
+import type { TradingMetadata } from "common/types";
 
 const SUPPORTED_ACTIONS = [
   {

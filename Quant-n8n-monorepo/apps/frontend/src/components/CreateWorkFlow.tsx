@@ -13,9 +13,10 @@ import {
 } from '@xyflow/react';
 import { TriggerSheet } from './TriggerSheet';
 import { ActionSheet } from './ActionSheet';
-import { PriceTrigger, type PriceTriggerMetadata } from '@/nodes/triggers/PriceTrigger';
-import { Timer, type TimerNodeMetadata } from '@/nodes/triggers/Timer';
-import { Lighter, type TradingMetadata } from '@/nodes/actions/Lighter';
+import { PriceTrigger } from '@/nodes/triggers/PriceTrigger';
+import { type TradingMetadata , type TimerNodeMetadata , type PriceTriggerMetadata } from 'common/types';
+import { Timer } from '@/nodes/triggers/Timer';
+import { Lighter } from '@/nodes/actions/Lighter';
 import { Backpack } from '@/nodes/actions/Backpack';
 import { Hyperliquid } from '@/nodes/actions/Hyperliquid';
 

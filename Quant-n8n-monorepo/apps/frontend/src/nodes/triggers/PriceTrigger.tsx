@@ -1,14 +1,13 @@
 
 
 import {Handle, Position} from "@xyflow/react"
-
-
-
+import { type PriceTriggerMetadata } from "common/types";
+/*
 export type PriceTriggerMetadata = {
     asset: string,
     price: number
     decimals : number
-};
+}; */
 
 export function PriceTrigger({data, isConnectable} : {
     data : {

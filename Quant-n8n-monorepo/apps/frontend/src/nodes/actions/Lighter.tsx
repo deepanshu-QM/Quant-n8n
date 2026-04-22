@@ -1,12 +1,15 @@
 
-import { SUPPORTED_ASSETS } from "@/components/TriggerSheet";
+/*import { SUPPORTED_ASSETS } from "common/types"; */
 import { Handle, Position } from "@xyflow/react";
+import { type TradingMetadata } from "common/types";
 
+/*
 export type TradingMetadata = {
     type : "LONG" | "SHORT",
     qty : number,
     symbol : typeof SUPPORTED_ASSETS[number]
-}
+} */
+
 //it is an Lighter Node : 
 export function Lighter({data} : {
     data : {
