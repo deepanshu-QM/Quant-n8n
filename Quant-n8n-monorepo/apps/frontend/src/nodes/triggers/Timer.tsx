@@ -13,9 +13,9 @@ export function Timer({
   };
   isConnectable: boolean;
 }) {
-  return (
+  return ( /* Bug Fixed */
     <div className="p-4 border">
-      {data.metadata.time / 3600} seconds
+      {data.metadata.time} seconds  
       <Handle
         type="source"
         position={Position.Right}

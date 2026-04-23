@@ -46,7 +46,7 @@ export const ActionSheet = ({
 }: {
   onSelect: (kind: NodeKind, metadata: NodeMetadata) => void;
 }) => {
-  const [metadata, setMetadata] = useState<Partial<TradingMetadata>>({});
+  const [metadata, setMetadata] = useState<Partial<TradingMetadata>>({type : "LONG"});  //Fixed Bug empty -> type : LONG
   const [selectedAction, setSelectedAction] = useState<SupportedActionId>(SUPPORTED_ACTIONS[0].id);
 
   const showTradingFields =
@@ -145,8 +145,32 @@ export const ActionSheet = ({
           )}
         </div>
 
-        <SheetFooter>
+        <SheetFooter> 
           <Button
+    // DISABLE if essential fields are missing
+            disabled={!metadata.symbol || !metadata.qty || metadata.qty <= 0 || isNaN(metadata.qty)} //FIX: Guard against NaN from non-numeric input
+              onClick={() => {
+      // Final safety check before calling the prop function
+              if (metadata.type && metadata.symbol && metadata.qty && !isNaN(metadata.qty)) {
+                 onSelect(
+          selectedAction, 
+          metadata as TradingMetadata // Now safe to cast because of validation
+        );
+      }
+    }}
+    type="submit"
+    className="w-full"
+  >
+    Create Action
+  </Button>
+        </SheetFooter>
+      </SheetContent>
+    </Sheet>
+  );
+};
+
+/* Older Version : 
+<Button
             onClick={() => {
               onSelect(
                 selectedAction, 
@@ -156,9 +180,4 @@ export const ActionSheet = ({
             type="submit"
           >
             Create Action
-          </Button>
-        </SheetFooter>
-      </SheetContent>
-    </Sheet>
-  );
-};
+          </Button>    */

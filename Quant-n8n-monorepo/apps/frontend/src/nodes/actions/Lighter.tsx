@@ -18,9 +18,9 @@ export function Lighter({data} : {
 }) {
     return <div className="p-4 border">
         Lighter Trade
-        <div>{data.metadata.type}</div>
-        <div>{data.metadata.qty}</div>
-        <div>{data.metadata.symbol}</div>
+        <div>Type : {data.metadata.type}</div>
+        <div>Qty : {data.metadata.qty}</div>
+        <div>Symbol : {data.metadata.symbol}</div>
         <Handle type="source" position={Position.Right}></Handle>
         <Handle type="target" position={Position.Left}></Handle>
     </div>

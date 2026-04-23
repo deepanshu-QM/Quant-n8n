@@ -16,6 +16,7 @@ export default function App() {
 
 import '@xyflow/react/dist/style.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { ReactFlowProvider } from '@xyflow/react';
 import { CreateWorkFlow } from './components/CreateWorkFlow';
 import Home from './components/Home'; // Import your Home component
 import Signup from './components/Signup';
@@ -29,7 +30,7 @@ export default function App() {
       <Routes>
         {/* Add the Home route */}
         <Route path="/" element={<Home />} />
-        <Route path="/create-workflow" element={<CreateWorkFlow />} />
+        <Route path="/create-workflow" element={<ReactFlowProvider><CreateWorkFlow/></ReactFlowProvider>} />  
         <Route path="/Signup" element={<Signup/>}/>
         <Route path="/Contact" element={<Contact/>}/>
         <Route path="/Documentation" element={<Documentation/>}/>

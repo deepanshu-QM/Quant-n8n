@@ -10,6 +10,7 @@ import {
   type OnNodesChange,
   type OnEdgesChange,
   type OnConnect,
+  useReactFlow,
 } from '@xyflow/react';
 import { TriggerSheet } from './TriggerSheet';
 import { ActionSheet } from './ActionSheet';
@@ -37,12 +38,13 @@ type WorkflowEdge = Edge;
 const nodeTypes: NodeTypes = {
   "price-trigger": PriceTrigger,
   timer: Timer,
-  "Lighter" : Lighter,
+  "lighter" : Lighter,                 //Bug 1 : "Lighter " -> "lighter"
   "backpack" : Backpack,
   "hyperliquid" : Hyperliquid
 };
 
 export function CreateWorkFlow() {
+  const  {screenToFlowPosition} = useReactFlow();   //added later  : Resolving Bug Here 
   const [nodes, setNodes] = useState<WorkflowNode[]>([]);
   const [edges, setEdges] = useState<WorkflowEdge[]>([]);
   const [selectedAction, setSelectedAction] = useState<{
@@ -65,7 +67,8 @@ export function CreateWorkFlow() {
     setEdges((edgesSnapshot) => addEdge(params, edgesSnapshot));
   }, []);
 
-  const POSITION_OFFSET = 50
+  //const POSITION_OFFSET = 50
+  /*
   const onConnectEnd = useCallback(
     (_event: MouseEvent | TouchEvent, connectionInfo: any) => {
       if (!connectionInfo.isValid) {
@@ -79,6 +82,21 @@ export function CreateWorkFlow() {
       }
     },
     []
+  ); */
+  const onConnectEnd = useCallback(
+    (event: MouseEvent | TouchEvent, connectionInfo: any) => {
+      if (!connectionInfo.isValid) {
+        // Use the event client coordinates to get the drop position
+        const { clientX, clientY } = 'changedTouches' in event ? event.changedTouches[0] : event;
+        const position = screenToFlowPosition({ x: clientX, y: clientY });
+
+        setSelectedAction({
+          startingNodeId: connectionInfo.fromNode.id,
+          position: position,
+        });
+      }
+    },
+    [screenToFlowPosition]
   );
 
   return (

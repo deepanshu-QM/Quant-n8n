@@ -16,12 +16,12 @@ export function Backpack({data} : {
     data : {
         metadata : TradingMetadata
     }
-}) {
+}) {  /* Bug Fixed Here */
     return <div className="p-4 border">
-        Lighter Trade
-        <div>{data.metadata.type}</div>
-        <div>{data.metadata.qty}</div>
-        <div>{data.metadata.symbol}</div>
+        Backpack Trade
+        <div>Type : {data.metadata.type}</div>
+        <div>Qty : {data.metadata.qty}</div>
+        <div>Assest : {data.metadata.symbol}</div>
         <Handle type="source" position={Position.Right}></Handle>
         <Handle type="target" position={Position.Left}></Handle>
     </div>
