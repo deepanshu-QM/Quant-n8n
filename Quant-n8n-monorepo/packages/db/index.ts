@@ -68,7 +68,7 @@ const WorkflowNodeSchema = new Schema({
 
     credentials : Schema.Types.Mixed,
 
-    type : {
+    nodeId : {
         type : mongoose.Types.ObjectId,
         ref : 'Nodes' /*This is Foreign Key */
     }, 
