@@ -1,3 +1,5 @@
+
+
 /* =====================================================
    FONT & BOX-SIZING SCOPE — Fight Tailwind
 ===================================================== */
@@ -41,9 +43,6 @@ body {
 .three { z-index: 4; }
 .four  { z-index: 5; }
 .five  { z-index: 6; }
-.six   { z-index: 7; }
-.seven { z-index: 8; }
-.eight { z-index: 9; }
 
 /* =========================
    NAVBAR
@@ -536,133 +535,6 @@ a.btn-contact:active {
   text-align: left !important;
 }
 
-
-/* =========================
-   PAGE 7 - FAQ
-========================= */
-.page.seven {
-  background-color: white !important;
-  justify-content: center !important;
-  gap: 40px !important;
-}
-
-.page7-heading {
-  text-align: center !important;
-}
-
-.page7-heading h1 {
-  font-size: 48px !important;
-  font-weight: bold !important;
-  font-family: Arial, Helvetica, sans-serif !important;
-  margin: 0 !important;
-  color: #111 !important;
-}
-
-.page7-heading p {
-  font-size: 18px !important;
-  color: #555 !important;
-  margin-top: 10px !important;
-}
-
-.faq-container {
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 15px !important;
-  width: 100% !important;
-  max-width: 800px !important;
-}
-
-.faq-item {
-  background: #f2f2f2 !important;
-  border-radius: 12px !important;
-  padding: 20px !important;
-  cursor: pointer !important;
-  transition: all 0.3s ease !important;
-}
-
-.faq-item:hover {
-  background: #e8e8e8 !important;
-}
-
-.faq-question {
-  font-size: 20px !important;
-  font-weight: bold !important;
-  color: #111 !important;
-  display: flex !important;
-  justify-content: space-between !important;
-  align-items: center !important;
-}
-
-.faq-question span {
-  font-size: 24px !important;
-  color: blue !important;
-}
-
-.faq-answer {
-  font-size: 16px !important;
-  color: #444 !important;
-  margin-top: 15px !important;
-  padding-top: 15px !important;
-  border-top: 1px solid #ddd !important;
-  line-height: 1.5 !important;
-}
-
-/* =========================
-   PAGE 8 - GRID & FOOTER
-========================= */
-.page.eight {
-  background-color: #f9f9f9 !important;
-  justify-content: center !important;
-  gap: 50px !important;
-}
-
-.page8-heading {
-  text-align: center !important;
-}
-
-.page8-heading h1 {
-  font-size: 48px !important;
-  font-weight: bold !important;
-  font-family: Arial, Helvetica, sans-serif !important;
-  margin: 0 !important;
-  color: #111 !important;
-}
-
-.grid8 {
-  display: grid !important;
-  grid-template-columns: repeat(3, 1fr) !important;
-  gap: 25px !important;
-  width: 100% !important;
-  max-width: 1100px !important;
-}
-
-/* Specific styling to match the design with Blue text */
-.blue-text h2 {
-  color: blue !important;
-}
-.blue-text p {
-  color: #0000bb !important; /* Slightly darker blue for contrast on paragraph */
-}
-
-/* Social Media Nav styled like Navbar */
-.footer-nav-wrapper {
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  width: 100% !important;
-  max-width: 1200px !important;
-  background: rgba(255, 255, 255, 0.6) !important;
-  border-radius: 50px !important;
-  padding: 8px !important;
-  margin-top: 20px !important;
-}
-
-.footer-nav {
-  justify-content: center !important;
-  padding: 18px 40px !important;
-}
-
-
 /* =========================
    RESPONSIVE
 ========================= */
@@ -703,13 +575,7 @@ a.btn-contact:active {
     grid-template-columns: 1fr !important;
   }
 
-  .grid8 {
-    grid-template-columns: 1fr !important;
-  }
-
-  .page6-heading h1,
-  .page7-heading h1,
-  .page8-heading h1 {
+  .page6-heading h1 {
     font-size: 28px !important;
   }
 
@@ -723,11 +589,5 @@ a.btn-contact:active {
 
   .containerOfSection3 > h1 {
     font-size: 40px !important;
-  }
-
-  .footer-nav {
-    flex-direction: column !important;
-    gap: 15px !important;
-    padding: 15px !important;
   }
 }

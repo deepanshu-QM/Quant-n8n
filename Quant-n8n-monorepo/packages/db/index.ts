@@ -36,11 +36,11 @@ const EdgesSchema = new Schema({
 /* Position of the Nodes */
 const PositionSchema = new Schema({
     x: {
-        type : String,
+        type : Number,
         required : true
     },
     y : {
-        type : String,
+        type : Number,
         required : true
     }
 },{
@@ -57,7 +57,7 @@ const NodedataSchema = new Schema({
 })
 
 /* Nodes Itself */
-const NodesSchema = new Schema({
+const WorkflowNodeSchema = new Schema({
 
     id : {
         type: String,
@@ -87,8 +87,60 @@ const workflowSchema = new Schema({
         required : true,
         ref : 'Users'                   /*This is an Foreign Key : It an Refrence to User table  */
     },
-    nodes : [NodesSchema],
+    nodes : [WorkflowNodeSchema],
     edges : [EdgesSchema]
 
 })
+
+
+const CredentialsTypeSchema = new Schema({
+    title : {
+        type : String,
+        required : true
+    },
+    required : {
+        type : Boolean,
+        required : true
+    }
+})
+
+
+const NodesSchema = new Schema({
+    title : {
+        type : String,
+        required : true
+    },
+
+    description : {
+        type : String
+    },
+    type : {
+        type : String,
+        enum : ["ACTION", "TRIGGER"],
+        required : true
+    },
+    credentialsType : [CredentialsTypeSchema] /* Every Node Should Have Multiple Credentials */
+})
+
+const ExecutionSchema =  new Schema({
+    workflowId : {
+        type :mongoose.Types.ObjectId,
+        required : true,
+        ref : 'Workflows'
+    },
+    status : {
+        type : String,
+        enum : ["PENDING","SUCCESS","FAILURE"]
+    },
+    startTime : {
+        type : Date,
+        default : Date.now()
+    },
+    endTime : {
+        type : Date
+    }
+})
 export const UserModel = mongoose.model("Users", UserSchema);
+export const workflowModel = mongoose.model("Worksflows", workflowSchema);
+export const NodesModel = mongoose.model("Nodes", NodesSchema);
+export const ExecutionModel = mongoose.model("Execution", ExecutionSchema);

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./home.css";
 
 // — Images
@@ -20,13 +20,6 @@ import keyVideo from "../assets/key-video.mp4";
 import securityVideo from "../assets/security.mp4";
 
 const Home: React.FC = () => {
-  // State for toggling FAQ answers
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
-
-  const toggleFaq = (index: number) => {
-    setOpenFaq(openFaq === index ? null : index);
-  };
-
   return (
     <>
       {/* NAVBAR */}
@@ -79,7 +72,7 @@ const Home: React.FC = () => {
         {/* Grid 1 */}
         <div className="gridcontainer1">
           <div>
-            <img src={chartImg} alt="chart" />
+            <img src={chartImg} alt="chart"  />
           </div>
           <div>
             <h3>Fusing Finance with</h3>
@@ -107,7 +100,7 @@ const Home: React.FC = () => {
         {/* Grid 3 */}
         <div className="gridcontainer3">
           <div>
-            <img src={moneyImg} alt="money" />
+            <img src={moneyImg}  alt="money" />
           </div>
           <div>
             <h3>Beyond Investing</h3>
@@ -149,7 +142,7 @@ const Home: React.FC = () => {
 
           <div className="grid5">
             <div>
-              <img src={grid5img1} className="grid5img" alt="dashboard 1" loading="lazy" decoding="async" />
+              <img src={grid5img1} className="grid5img" alt="dashboard 1" loading="lazy" decoding="async"/>
             </div>
             <div>
               <img src={grid5img2} className="grid5img" alt="dashboard 2" loading="lazy" decoding="async" />
@@ -250,102 +243,6 @@ const Home: React.FC = () => {
             <h2>Signals</h2>
             <p>Fast alerts</p>
           </div>
-        </div>
-      </section>
-
-      {/* PAGE 7 - FAQ */}
-      <section className="page seven">
-        <div className="page7-heading">
-          <h1>Got Questions?</h1>
-          <p>Everything you need to know about Quant AI.</p>
-        </div>
-
-        <div className="faq-container">
-          {/* FAQ 1 */}
-          <div className="faq-item" onClick={() => toggleFaq(1)}>
-            <div className="faq-question">
-              What is Quant AI? <span>{openFaq === 1 ? "-" : "+"}</span>
-            </div>
-            {openFaq === 1 && (
-              <div className="faq-answer">
-                Quant AI is a next-generation platform fusing social connectivity with 
-                institutional-grade financial tools, allowing users to build, automate, 
-                and share trading strategies.
-              </div>
-            )}
-          </div>
-
-          {/* FAQ 2 */}
-          <div className="faq-item" onClick={() => toggleFaq(2)}>
-            <div className="faq-question">
-              Is my data and investment secure? <span>{openFaq === 2 ? "-" : "+"}</span>
-            </div>
-            {openFaq === 2 && (
-              <div className="faq-answer">
-                Absolutely. We go beyond standard security protocols with bank-level 
-                encryption and strict compliance measures to safeguard your assets.
-              </div>
-            )}
-          </div>
-
-          {/* FAQ 3 */}
-          <div className="faq-item" onClick={() => toggleFaq(3)}>
-            <div className="faq-question">
-              Which networks do you currently support? <span>{openFaq === 3 ? "-" : "+"}</span>
-            </div>
-            {openFaq === 3 && (
-              <div className="faq-answer">
-                We currently offer seamless integration with Solana, Binance Coin (BNB), 
-                and perpetual futures via the Hyperliquid API.
-              </div>
-            )}
-          </div>
-
-          {/* FAQ 4 */}
-          <div className="faq-item" onClick={() => toggleFaq(4)}>
-            <div className="faq-question">
-              How do I get started? <span>{openFaq === 4 ? "-" : "+"}</span>
-            </div>
-            {openFaq === 4 && (
-              <div className="faq-answer">
-                Simply click the Signup button at the top of the page, create your account, 
-                and start exploring the visual workflow builder immediately.
-              </div>
-            )}
-          </div>
-        </div>
-      </section>
-
-      {/* PAGE 8 - Grid & Social Footer */}
-      <section className="page eight">
-        <div className="page8-heading">
-          <h1>Ready to take the leap?</h1>
-        </div>
-
-        {/* 3 Grid Box with Blue text */}
-        <div className="grid8">
-          <div className="box blue-text">
-            <h2>Automated Trading</h2>
-            <p>Set up robust rules and let our AI handle the execution.</p>
-          </div>
-          <div className="box blue-text">
-            <h2>Secure & Reliable</h2>
-            <p>Your workflow remains safe with top-tier encryption standards.</p>
-          </div>
-          <div className="box blue-text">
-            <h2>24/7 Support</h2>
-            <p>We're always online and here to help you navigate your journey.</p>
-          </div>
-        </div>
-
-        {/* Social Media Links like Nav Bar */}
-        <div className="footer-nav-wrapper">
-          <nav className="nav-left footer-nav">
-            <a href="#">Twitter (X)</a>
-            <a href="#">Discord</a>
-            <a href="#">LinkedIn</a>
-            <a href="#">Telegram</a>
-          </nav>
         </div>
       </section>
     </>
