@@ -21,7 +21,7 @@ export function Backpack({data} : {
         Backpack Trade
         <div>Type : {data.metadata.type}</div>
         <div>Qty : {data.metadata.qty}</div>
-        <div>Assest : {data.metadata.symbol}</div>
+        <div>Asset : {data.metadata.symbol}</div>
         <Handle type="source" position={Position.Right}></Handle>
         <Handle type="target" position={Position.Left}></Handle>
     </div>

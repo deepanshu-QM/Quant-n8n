@@ -20,6 +20,7 @@ import { Timer } from '@/nodes/triggers/Timer';
 import { Lighter } from '@/nodes/actions/Lighter';
 import { Backpack } from '@/nodes/actions/Backpack';
 import { Hyperliquid } from '@/nodes/actions/Hyperliquid';
+import './CreateWorkFlow.css';
 
 export type NodeKind = "price-trigger" | "timer" | "hyperliquid" | "backpack" | "lighter";
 
