@@ -21,7 +21,7 @@ import { CreateWorkFlow } from './components/CreateWorkFlow';
 import Home from './components/Home'; // Import your Home component
 import Signup from './components/Signup';
 import Contact from './components/Contact';
-import Documentation from './components/Documentation';
+import Dashboard from './components/Dashboard';
 import Login from './components/Login';
 
 export default function App() {
@@ -33,7 +33,7 @@ export default function App() {
         <Route path="/create-workflow" element={<ReactFlowProvider><CreateWorkFlow/></ReactFlowProvider>} />  
         <Route path="/Signup" element={<Signup/>}/>
         <Route path="/Contact" element={<Contact/>}/>
-        <Route path="/Documentation" element={<Documentation/>}/>
+        <Route path="/Dashboard" element={<Dashboard/>}/>
         <Route path="/Login" element={<Login/>}/>
       </Routes>
     </BrowserRouter>

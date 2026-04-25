@@ -1,13 +1,18 @@
 
 
 import express from "express"
+import mongoose from "mongoose"
+import { UserModel } from "db/frontend"
+mongoose.connect(process.env.MONGO_URL !)
 const app = express()
 
 app.post("/signup", (req,res) => {
+    UserModel.create({
 
+    })
 })
 
-app.post("/sigin", (req,res) => {
+app.post("/Login", (req,res) => {
 
 })
 app.post("/workflow", (req,res) => {

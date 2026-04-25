@@ -27,10 +27,11 @@ const Contact: React.FC = () => {
       {/* NAVBAR — same as home */}
       <div className="navbar-wrapper">
         <nav className="nav-left">
-          <a href="/">Home</a>
-          <a href="/create-workflow">Product</a>
-          <a href="#">Documentation</a>
+          <a href="./Home">Home</a>
+          <a href="./create-workflow">Product</a>
+          <a href="./Dashboard">Dashboard</a>
           <a href="/https://github.com/deepanshu-QM/Quant-n8n">GitHub</a>
+          <a href="./Login">Login</a>
         </nav>
         <nav className="nav-right">
           <a href="/signup">Signup</a>

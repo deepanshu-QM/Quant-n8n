@@ -25,9 +25,9 @@ const Home: React.FC = () => {
       {/* NAVBAR */}
       <div className="navbar-wrapper">
         <nav className="nav-left">
-          <a href="#">Home</a>
+          <a href="/Home">Home</a>
           <a href="/create-workflow">Product</a>
-          <a href="/Documentation">Documentation</a>
+          <a href="/Dashboard">Dashboard</a>
           <a href="https://github.com/deepanshu-QM/Quant-n8n">GitHub</a>
           <a href="/Login">Login</a>
         </nav>

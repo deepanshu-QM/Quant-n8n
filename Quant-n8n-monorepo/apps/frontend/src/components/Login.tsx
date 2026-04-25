@@ -33,8 +33,9 @@ const Login: React.FC = () => {
         <nav className="nav-left">
           <a href="/Home">Home</a>
           <a href="/create-workflow">Product</a>
-          <a href="/documentation">Documentation</a>
+          <a href="/Dashboard">Dashboard</a>
           <a href="/https://github.com/deepanshu-QM/Quant-n8n">GitHub</a>
+          <a href="/Login">Login</a>
         </nav>
         <nav className="nav-right">
           <a href="/signup">Signup</a>
