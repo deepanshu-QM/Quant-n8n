@@ -4,7 +4,10 @@
   "type": "module",
   "private": true,
   "exports": {
-    "./types": "./index.ts"
+    "./types": {
+      "types": "./types/index.ts",
+      "default": "./types/index.ts"
+    }
   },
   "devDependencies": {
     "@types/bun": "latest"
