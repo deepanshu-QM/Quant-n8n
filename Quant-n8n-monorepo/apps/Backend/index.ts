@@ -5,8 +5,8 @@ import mongoose from "mongoose"
 import jwt from "jsonwebtoken"
 import { authMiddleware } from "./middleware";
 import "dotenv/config";
-import {SigninSchema, SignupSchema, CreateWorkFlowSchema } from "common/types"
-import { UserModel, workflowModel } from "db/frontend"
+import {SigninSchema, SignupSchema, CreateWorkFlowSchema ,UpdateWorkflowSchema} from "common/types"
+import { ExecutionModel, NodesModel, UserModel, workflowModel } from "db/frontend"
 
 /*import dotenv from "dotenv";
 dotenv.config(); */
@@ -80,9 +80,10 @@ app.post("/Login" ,async (req,res) => {
     }
 })
 
-
-app.post("/workflow",authMiddleware,async (req,res) => {
+/* WorkFlow End Poin  */
+app.post("/create-workflow",authMiddleware,async (req,res) => {
     const userId = req.userId;
+    console.log(userId)
     const parsed = CreateWorkFlowSchema.safeParse(req.body)
     if(!parsed.success){
         res.status(403).json({
@@ -90,15 +91,15 @@ app.post("/workflow",authMiddleware,async (req,res) => {
         })
         return
     }
-    const data = parsed.data
+    const {nodes,edges} = parsed.data        /* First Bug Resolve Here */
     try {
         const workflow = await workflowModel.create({
             userId,
-            nodes:data.nodes,
-            edges :data.edges
+            nodes,
+            edges,
         })
         res.json({
-            id : workflow._id
+            id : workflow._id                    
         })
 
     }catch(e){
@@ -108,25 +109,76 @@ app.post("/workflow",authMiddleware,async (req,res) => {
     }
 })
 
-app.put("/workflow" , (req,res) => {
+//Update End Points are here : 
 
+app.put("/create-workflow/:workflowId" , authMiddleware,async(req,res) => {
+    const userId = req.userId;
+    const {workflowId} = req.params
+    const parsed = UpdateWorkflowSchema.safeParse(req.body)
+    if(!parsed.success){
+        res.status(403).json({
+            message : "Incorrect Inputs"
+        })
+        return
+    }
+    const {nodes, edges} = parsed.data
+
+    try {
+        const workflow = await workflowModel.findOneAndUpdate(
+            {_id :workflowId , userId},              /* First it Filter (find) /first argument */
+            {nodes , edges},     /* here it updates */
+            {new : true}          /* return true after update */
+        )
+        if (!workflow) {
+            res.status(404).json({ message: "Workflow not found" })
+            return
+        }
+
+        res.json({
+            id: workflow._id,
+        })
+    }catch(e){
+        res.status(500).json({ message: "Failed to Update Workflow" })
+    }
+ })
+
+
+//getting the data of Nodes and Edges :
+app.get("/create-workflow/:workflowId", authMiddleware,async(req,res)=> {
+    const workflow = await workflowModel.findById(
+        req.params.workflowId
+    )                                                                   /*  { _id: req.params.workflowId, userId: req.userId  }*/
+    if(!workflow || workflow.userId.toString() !== req.userId){
+        res.status(404).json({
+            message : "WorkFlow not Found"
+        })
+        return
+    }
+    res.json(workflow)
 })
 
-app.get("/workflow/:workflowId", (req,res)=> {
-
+//Finding all WorkFlow by Get request 
+app.get("/workflow" , authMiddleware, async(req,res) => {
+    const workflow = await workflowModel.find({
+        userId : req.userId
+    })
+    res.json(workflow)
 })
 
-app.get("/workflow/executions/:workflowId",(req,res) => {
-
+app.get("/create-workflow/executions/:workflowId",authMiddleware,async(req,res) => {
+    const executions = await ExecutionModel.find({
+        workflowId : req.params.workflowId
+    })
+    res.json({
+        executions
+    })
 })
 
-app.post("/credentials", (req,res)=> {
-
+app.get("/nodes", async(req,res) => {
+    const nodes = await NodesModel.find();
+    res.json(nodes)
 })
 
-app.get("/credentials",(req,res) => {
-    
-})
 app.listen(process.env.PORT || 3001)
 
 

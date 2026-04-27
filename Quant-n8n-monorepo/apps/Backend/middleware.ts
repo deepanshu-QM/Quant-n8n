@@ -14,7 +14,7 @@ export function authMiddleware(req:Request, res:Response, next:NextFunction){
     } 
 
     try {
-        
+        console.log(header)
         const token = header.split(" ")[1]       
         if(!token){
             return res.status(403).json({
