@@ -23,7 +23,8 @@
 /* Base Node Styling */
 .react-flow__node {
     border-radius: var(--radius-lg);
-    padding: 12px;
+    padding: 6px 10PX ;                      /* PREV : 16PX */
+    font-size: 0.78rem;                /* nEW */
     font-family: var(--font-sans);
     border: 1px solid var(--border);
     background: var(--card);
@@ -44,16 +45,16 @@
 /* Trigger Nodes (Left-side/Start) */
 .react-flow__node-price-trigger,
 .react-flow__node-timer {
-    border-left: 5px solid #3b82f6; /* Blue for Triggers */
-    min-width: 180px;
+    border-left: 4px solid #3b82f6; /* Blue for Triggers : 5PX PREV */
+    min-width: 130px;         /* PREV : 180PX */
 }
 
 /* Action Nodes (Exchanges/Operations) */
 .react-flow__node-lighter,
 .react-flow__node-backpack,
 .react-flow__node-hyperliquid {
-    border-left: 5px solid #10b981; /* Green for Actions */
-    min-width: 200px;
+    border-left: 4px solid #10b981; /* Green for Actions  : PREV : 5PX*/
+    min-width: 150px;            /* PREV : 180PX */
 }
 
 /* Handles (Dots where lines connect) */
@@ -162,4 +163,57 @@
 
 .react-flow__controls-button:hover {
     background: var(--accent);
+}
+
+
+
+/* ✦ NEW — Toolbar (API Key + Publish Button) */
+.workflow-toolbar {
+    position: fixed;
+    /*bottom: 24px; */
+    top: 24px; 
+    left: 24px;  /* prev it was on righ side */
+    z-index: 1000;
+    /*display: flex; 
+    align-items: center; */
+    gap: 10px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 10px 14px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    backdrop-filter: blur(8px);
+}
+
+
+
+.workflow-publish-btn {
+    background: #000000;
+    color: #ffffff;
+    border: none;
+    padding: 10px 24px;
+    border-radius: var(--radius-md);
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    transition: opacity 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);
+    white-space: nowrap;
+}
+
+.workflow-publish-btn:hover:not(:disabled) {
+    opacity: 0.85; 
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.workflow-publish-btn:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.workflow-publish-btn:disabled {
+    /*opacity: 0.35; */
+    cursor: not-allowed;
+    box-shadow: none;
 }

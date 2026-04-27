@@ -1,4 +1,6 @@
 
+export * from "../metadata";
+
 import {z} from "zod"
 
 export const SignupSchema = z.object({

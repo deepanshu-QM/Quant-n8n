@@ -6,7 +6,8 @@ export const SUPPORTED_ASSETS = ["SOL", "BTC", "ETH", "USDT","BNB", "XRP", "USDC
 export type TradingMetadata = {
     type : "LONG" | "SHORT",
     qty : number,
-    symbol : typeof SUPPORTED_ASSETS[number]
+    symbol : typeof SUPPORTED_ASSETS[number],
+    apiKey : string
 }
 
 

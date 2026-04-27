@@ -20,6 +20,8 @@ import { useState } from "react";
 import { Input } from "./ui/input";
 import { SUPPORTED_ASSETS } from "common/types";
 import type { TradingMetadata } from "common/types";
+import { Zap, BarChart2, Coins, KeyRound } from "lucide-react";  /* Added for UI */
+
 
 const SUPPORTED_ACTIONS = [
   {
@@ -46,7 +48,7 @@ export const ActionSheet = ({
 }: {
   onSelect: (kind: NodeKind, metadata: NodeMetadata) => void;
 }) => {
-  const [metadata, setMetadata] = useState<Partial<TradingMetadata>>({type : "LONG"});  //Fixed Bug empty -> type : LONG
+  const [metadata, setMetadata] = useState<Partial<TradingMetadata>>({});  //Fixed Bug empty -> type : LONG
   const [selectedAction, setSelectedAction] = useState<SupportedActionId>(SUPPORTED_ACTIONS[0].id);
 
   const showTradingFields =
@@ -58,7 +60,7 @@ export const ActionSheet = ({
     <Sheet open={true}>
       <SheetContent>
         <SheetHeader>
-          <SheetTitle>Select Action</SheetTitle>
+          <SheetTitle>SELECT ACTION</SheetTitle>
           <SheetDescription>
             Select the type of action that you need
           </SheetDescription>
@@ -87,7 +89,8 @@ export const ActionSheet = ({
             <div className="flex flex-col gap-4">
               {/* Type */}
               <div>
-                <div className="pb-1">Type</div>
+                <div className="pb-1 flex items-center gap-1 text-sm font-medium"> {/* UI added later */}
+                <BarChart2 size={13} className="text-muted-foreground" />Type</div>
                 <Select
                   value={metadata.type}
                   onValueChange={(value) =>
@@ -95,7 +98,7 @@ export const ActionSheet = ({
                   }
                 >
                   <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Select a type" />
+                    <SelectValue placeholder="Select a type long or short" />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectGroup>
@@ -108,7 +111,8 @@ export const ActionSheet = ({
 
               {/* Symbol */}
               <div>
-                <div className="pb-1">Symbol</div>
+                <div className="pb-1 flex items-center gap-1 text-sm font-medium">  {/* UI added */}
+                <Coins size={13} className="text-muted-foreground" />Asset</div>
                 <Select
                   value={metadata.symbol}
                   onValueChange={(value) =>
@@ -116,7 +120,7 @@ export const ActionSheet = ({
                   }
                 >
                   <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Select an asset" />
+                    <SelectValue placeholder="Which asset to long and short" />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectGroup>
@@ -132,12 +136,27 @@ export const ActionSheet = ({
 
               {/* Quantity */}
               <div>
-                <div className="pb-1">Qty</div>
+                <div className="pb-1 flex items-center gap-1 text-sm font-medium">  {/* UI added */}
+                <KeyRound size={13} className="text-muted-foreground" />Quantity</div>
                 <Input
                   type="number"
+                  placeholder="How much long and short"
                   value={metadata.qty ?? ""}
                   onChange={(e) =>
                     setMetadata((m) => ({ ...m, qty: Number(e.target.value) }))
+                  }
+                />
+              </div>
+               {/* ✦ NEW — API Key */}
+               <div>
+                <div className="pb-1 flex items-center gap-1 text-sm font-medium">  {/* UI added */}
+                <KeyRound size={13} className="text-muted-foreground" />API Key</div>
+                <Input
+                  type="password"
+                  placeholder="Enter API Key"
+                  value={metadata.apiKey ?? ""}
+                  onChange={(e) =>
+                    setMetadata((m) => ({ ...m, apiKey: e.target.value }))
                   }
                 />
               </div>
@@ -148,10 +167,10 @@ export const ActionSheet = ({
         <SheetFooter> 
           <Button
     // DISABLE if essential fields are missing
-            disabled={!metadata.symbol || !metadata.qty || metadata.qty <= 0 || isNaN(metadata.qty)} //FIX: Guard against NaN from non-numeric input
+            disabled={!metadata.symbol || !metadata.qty || metadata.qty <= 0 || isNaN(metadata.qty) || !metadata.apiKey} //FIX: Guard against NaN from non-numeric input
               onClick={() => {
       // Final safety check before calling the prop function
-              if (metadata.type && metadata.symbol && metadata.qty && !isNaN(metadata.qty)) {
+              if (metadata.type && metadata.symbol && metadata.qty && !isNaN(metadata.qty) && metadata.apiKey) {
                  onSelect(
           selectedAction, 
           metadata as TradingMetadata // Now safe to cast because of validation

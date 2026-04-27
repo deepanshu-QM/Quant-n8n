@@ -1,3 +1,6 @@
+
+//import { apiCreateWorkflow, apiUpdateWorkflow } from "@/lib/api";
+
 import { useState, useCallback } from 'react';
 import {
   ReactFlow,
@@ -12,6 +15,8 @@ import {
   type OnConnect,
   useReactFlow,
 } from '@xyflow/react';
+import { createPortal } from 'react-dom';
+import { Background, BackgroundVariant, Controls, MiniMap } from '@xyflow/react';
 import { TriggerSheet } from './TriggerSheet';
 import { ActionSheet } from './ActionSheet';
 import { PriceTrigger } from '@/nodes/triggers/PriceTrigger';
@@ -20,6 +25,7 @@ import { Timer } from '@/nodes/triggers/Timer';
 import { Lighter } from '@/nodes/actions/Lighter';
 import { Backpack } from '@/nodes/actions/Backpack';
 import { Hyperliquid } from '@/nodes/actions/Hyperliquid';
+//import { Input } from '@/components/ui/input';
 import './CreateWorkFlow.css';
 
 export type NodeKind = "price-trigger" | "timer" | "hyperliquid" | "backpack" | "lighter";
@@ -48,6 +54,7 @@ export function CreateWorkFlow() {
   const  {screenToFlowPosition} = useReactFlow();   //added later  : Resolving Bug Here 
   const [nodes, setNodes] = useState<WorkflowNode[]>([]);
   const [edges, setEdges] = useState<WorkflowEdge[]>([]);
+
   const [selectedAction, setSelectedAction] = useState<{
     position: {
       x: number;
@@ -99,6 +106,7 @@ export function CreateWorkFlow() {
     },
     [screenToFlowPosition]
   );
+
 
   return (
     <div style={{ width: '100vw', height: '100vh' }}>
@@ -153,7 +161,29 @@ export function CreateWorkFlow() {
         onConnect={onConnect}
         onConnectEnd={onConnectEnd}
         fitView
-      />
+        >
+           <Background variant={BackgroundVariant.Dots} gap={20} size={1} color="#e2e8f0" />
+           <Controls showInteractive={false} />
+           <MiniMap
+           nodeStrokeWidth={3}
+           nodeColor={(node) => node.data.kind === "triggers" ? "#3b82f6" : "#10b981"}
+            maskColor="rgba(0,0,0,0.05)"
+            />
+      </ReactFlow>
+       {/* ✦ NEW */}
+       {createPortal(
+        <div className="workflow-toolbar">
+          <button
+            className="workflow-publish-btn"
+            disabled={!nodes.length}
+            onClick={() => console.log("Publishing:", nodes)}
+          >
+             Publish Workflow
+          </button>
+        </div>,
+        document.body
+      )}
+
     </div>
   );
 }

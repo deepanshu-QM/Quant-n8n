@@ -23,6 +23,7 @@ import Signup from './components/Signup';
 import Contact from './components/Contact';
 import Dashboard from './components/Dashboard';
 import Login from './components/Login';
+//import { ExecutionsPage } from './components/ExecutionsPage'; 
 
 export default function App() {
   return (
@@ -30,7 +31,10 @@ export default function App() {
       <Routes>
         {/* Add the Home route */}
         <Route path="/" element={<Home />} />
-        <Route path="/create-workflow" element={<ReactFlowProvider><CreateWorkFlow/></ReactFlowProvider>} />  
+        <Route path="/create-workflow" element={<ReactFlowProvider><CreateWorkFlow/></ReactFlowProvider>} />
+        <Route path="/workflow/:workflowId" element={<ReactFlowProvider><CreateWorkFlow /></ReactFlowProvider>}/>
+        {/* <Route path="/workflow/:workflowId/executions" element={<ExecutionsPage />} />  */}
+
         <Route path="/Signup" element={<Signup/>}/>
         <Route path="/Contact" element={<Contact/>}/>
         <Route path="/Dashboard" element={<Dashboard/>}/>
