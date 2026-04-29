@@ -48,7 +48,7 @@ export const ActionSheet = ({
 }: {
   onSelect: (kind: NodeKind, metadata: NodeMetadata) => void;
 }) => {
-  const [metadata, setMetadata] = useState<Partial<TradingMetadata>>({});  //Fixed Bug empty -> type : LONG
+  const [metadata, setMetadata] = useState<Partial<TradingMetadata>>({});  //Fixed Bug 
   const [selectedAction, setSelectedAction] = useState<SupportedActionId>(SUPPORTED_ACTIONS[0].id);
 
   const showTradingFields =
